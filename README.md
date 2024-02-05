@@ -12,7 +12,8 @@ var body: some View {
     }
 }
 ```
-<img width="509" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/d0bc6387-08ac-4f97-9bcc-3551732fcccc">
+<img width="510" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/41bf9069-2b3d-468d-b7fb-bb069371da29">
+
 
 
 The default behavior is to display the star rating as well as the rating score. To disable the score you can pass `showScore: false` to the `ShapeProgressView`.
