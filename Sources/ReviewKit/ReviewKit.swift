@@ -17,7 +17,7 @@ public struct ShapeProgressView: View {
     let imageName: String
     let color: Color
     
-    init(count: Int = 5, value: Binding<Double>, imageName: String = "star", color: Color = .orange) {
+    public init(count: Int = 5, value: Binding<Double>, imageName: String = "star", color: Color = .orange) {
         self.count = count
         self._value = value
         self.imageName = imageName
