@@ -46,6 +46,8 @@ public struct ShapeProgressView: View {
                     ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
+                
+                Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
             case .score:
                 Text("\(reviewManager.rating, specifier: "%.1f")")
                     .fontDesign(.rounded)
