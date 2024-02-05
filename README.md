@@ -37,11 +37,15 @@ You can choose to hide the rating count text by passing an optional property.
 ```
 ShapeProgressView(appId: "12345678", showReviewCount: false)
 ```
+<img width="494" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/5ce7c11e-f104-4dae-bcc2-311c2253fd39">
+
 
 ### Changing colors
 You can pass a `Color` to the `color` property to modify the tint used for the stars. This is only visible in the `.graphical` and `.full` layout modes. 
 ```
 ShapeProgressView(appId: "12345678", color: Color.green)
 ```
+<img width="507" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/bf82ac32-1f8a-4b94-b3c7-96fbb53005d9">
+
 
 If you have any questions reach out on Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
