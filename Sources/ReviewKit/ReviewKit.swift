@@ -21,15 +21,17 @@ public struct ShapeProgressView: View {
     let imageName: String
     let color: Color
     let layout: LayoutType
+    let showReviewCount: Bool
     
     @StateObject private var reviewManager: ReviewManager
     
-    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
+    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full, showReviewCount: Bool = true) {
         self.appId = appId
         self.count = count
         self.imageName = imageName
         self.color = color
         self.layout = layout
+        self.showReviewCount = showReviewCount
         self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId))
     }
     
@@ -47,16 +49,26 @@ public struct ShapeProgressView: View {
                     ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
-                Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                if showReviewCount {
+                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                }
             case .score:
                 Text("\(reviewManager.rating, specifier: "%.1f")")
                     .fontDesign(.rounded)
                     .font(.largeTitle)
                     .fontWeight(.bold)
+                
+                if showReviewCount {
+                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                }
             case .graphical:
                 ZStack {
                     ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                }
+                
+                if showReviewCount {
+                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
                 }
             }
         }
