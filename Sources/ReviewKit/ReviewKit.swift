@@ -52,7 +52,7 @@ public struct ShapeProgressView: View {
                 }
                 
                 if showReviewCount {
-                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
             case .score:
                 Text("\(reviewManager.rating, specifier: "%.1f")")
@@ -61,7 +61,7 @@ public struct ShapeProgressView: View {
                     .fontWeight(.bold)
                 
                 if showReviewCount {
-                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
             case .graphical:
                 ZStack {
@@ -70,7 +70,7 @@ public struct ShapeProgressView: View {
                 }
                 
                 if showReviewCount {
-                    Text("Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews")
+                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
             }
         }
