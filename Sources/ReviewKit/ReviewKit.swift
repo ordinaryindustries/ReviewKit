@@ -16,18 +16,21 @@ public enum LayoutType {
 }
 
 public struct ShapeProgressView: View {
+    let appId: String
     let count: Int
     let imageName: String
     let color: Color
     let layout: LayoutType
     
-    @StateObject private var reviewManager = ReviewManager(appId: "6448406354")
+    @StateObject private var reviewManager: ReviewManager
     
-    public init(count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
+    public init(_ appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
+        self.appId = appId
         self.count = count
         self.imageName = imageName
         self.color = color
         self.layout = layout
+        self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId))
     }
     
     public var body: some View {
