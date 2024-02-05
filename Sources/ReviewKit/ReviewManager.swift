@@ -72,12 +72,14 @@ class ReviewManager: ObservableObject {
     @Published var reviewCount: Double
     @Published var isLoading: Bool
     let appId: String
+    let countryCode: String
     
-    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String) {
+    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String, countryCode: String = "US") {
         self.rating = rating
         self.reviewCount = reviewCount
         self.isLoading = isLoading
         self.appId = appId
+        self.countryCode = countryCode
     }
     
     var roundedRating: Double {
@@ -90,7 +92,7 @@ class ReviewManager: ObservableObject {
         DispatchQueue.main.async { self.isLoading = true }
         
         // The URL for the api endpoint.
-        let endpoint = "http://itunes.apple.com/lookup?id=\(appId)"
+        let endpoint = "http://itunes.apple.com/lookup?id=\(appId)&country=\(countryCode)"
         
         // Try creating a URL object with the endpoint url. If we cannot make the URL return.
         guard let url = URL(string: endpoint) else {
