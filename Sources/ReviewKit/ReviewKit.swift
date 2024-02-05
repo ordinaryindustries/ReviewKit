@@ -27,16 +27,18 @@ public struct ShapeProgressView: View {
     }
     
     public var body: some View {
-        if showScore {
-            Text("\(value, specifier: "%.1f")")
-                .fontDesign(.rounded)
-                .font(.largeTitle)
-                .fontWeight(.bold)
-        }
-
-        ZStack {
-            ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $value)
-            ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $value)
+        VStack(spacing: 16) {
+            if showScore {
+                Text("\(value, specifier: "%.1f")")
+                    .fontDesign(.rounded)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+            }
+            
+            ZStack {
+                ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $value)
+                ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $value)
+            }
         }
     }
 }
