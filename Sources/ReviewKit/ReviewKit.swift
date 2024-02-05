@@ -11,7 +11,7 @@
 
 import SwiftUI
 
-struct ShapeProgressView: View {
+public struct ShapeProgressView: View {
     let count: Int
     @Binding var value: Double
     let imageName: String
@@ -24,7 +24,7 @@ struct ShapeProgressView: View {
         self.color = color
     }
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $value)
             ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $value)
