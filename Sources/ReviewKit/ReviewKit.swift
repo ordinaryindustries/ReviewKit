@@ -22,17 +22,19 @@ public struct ShapeProgressView: View {
     let color: Color
     let layout: LayoutType
     let showReviewCount: Bool
+    let countryCode: String
     
     @StateObject private var reviewManager: ReviewManager
     
-    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full, showReviewCount: Bool = true) {
+    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full, showReviewCount: Bool = true, countryCode: String = "US") {
         self.appId = appId
         self.count = count
         self.imageName = imageName
         self.color = color
         self.layout = layout
         self.showReviewCount = showReviewCount
-        self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId))
+        self.countryCode = countryCode
+        self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
     
     public var body: some View {

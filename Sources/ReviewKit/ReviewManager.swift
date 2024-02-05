@@ -74,7 +74,7 @@ class ReviewManager: ObservableObject {
     let appId: String
     let countryCode: String
     
-    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String, countryCode: String = "US") {
+    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String, countryCode: String) {
         self.rating = rating
         self.reviewCount = reviewCount
         self.isLoading = isLoading
