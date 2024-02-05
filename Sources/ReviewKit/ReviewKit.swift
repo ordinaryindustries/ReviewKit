@@ -29,6 +29,7 @@ public struct ShapeProgressView: View {
     public var body: some View {
         if showScore {
             Text("\(value, specifier: "%.1f")")
+                .font(.title)
         }
 
         ZStack {
