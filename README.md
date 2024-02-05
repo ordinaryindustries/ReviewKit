@@ -12,3 +12,7 @@ var body: some View {
     }
 }
 ```
+The default behavior is to display the star rating as well as the rating score. To disable the score you can pass `showScore: false` to the `ShapeProgressView`.
+```
+ShapeProgressView(value: $value, showScore: false)
+```
