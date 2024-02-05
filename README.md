@@ -4,19 +4,17 @@ ReviewKit
 Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
 
 ## Usage
-Add a ShapeProgressView and pass it a rating value.
+Add a ShapeProgressView in your view code and pass in your app's ID. The view will automatically fetch your app's rating when the view appears.
 ```
-@State private var value:Double = 3.3
-
 var body: some View {
     VStack {
-        ShapeProgressView(value: $value)
+        ShapeProgressView(appId: "12345678")
     }
 }
 ```
-The default behavior is to display the star rating as well as the rating score. When initalizing `ShapeProgressView` you can set the layout type with an optional property `layout`. Options are `.full`, `.score`, and `.graphical`.
+The default behavior is to display the rating as a number, the rating as a set of stars, and a text line with the count of total reviews the rating is based on. When initalizing `ShapeProgressView` you can modify this behavior by setting the optional property `layout`. Options are `.full`, `.score`, and `.graphical`.
 ```
-ShapeProgressView(value: $value, layout: .full)
+ShapeProgressView(layout: .full)
 ```
 
 .full
@@ -30,5 +28,17 @@ ShapeProgressView(value: $value, layout: .full)
 .graphical
 
 <img width="511" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/61c5cf05-2d5f-4a99-9261-558074a42829">
+
+### Showing/Hiding the text view
+You can choose to hide the rating count text by passing an optional property.
+```
+ShapeProgressView(appId: "12345678", showReviewCount: false)
+```
+
+### Changing colors
+You can pass a `Color` to the `color` property to modify the tint used for the stars. This is only visible in the `.graphical` and `.full` layout modes. 
+```
+ShapeProgressView(appId: "12345678", color: Color.green)
+```
 
 If you have any questions reach out on Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
