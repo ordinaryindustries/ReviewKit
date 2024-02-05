@@ -19,15 +19,18 @@ ShapeProgressView(layout: .full)
 
 .full
 
-<img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/87556a52-474c-45d4-9ff5-921225d853b4">
+<img width="481" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/caa9f88b-4f44-4a7a-9be4-4df523c2be66">
+
 
 .score
 
-<img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/1f763ba2-8c25-481e-853d-145b7d288fab">
+<img width="509" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/96f0e5c3-b521-46e7-a9af-136b14314aad">
+
 
 .graphical
 
-<img width="511" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/61c5cf05-2d5f-4a99-9261-558074a42829">
+<img width="506" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/21bc470c-bd1f-4c60-9b5f-9e0170e6f90e">
+
 
 ### Showing/Hiding the text view
 You can choose to hide the rating count text by passing an optional property.
