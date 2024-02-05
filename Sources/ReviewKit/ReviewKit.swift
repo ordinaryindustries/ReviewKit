@@ -24,7 +24,7 @@ public struct ShapeProgressView: View {
     
     @StateObject private var reviewManager: ReviewManager
     
-    public init(_ appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
+    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
         self.appId = appId
         self.count = count
         self.imageName = imageName
