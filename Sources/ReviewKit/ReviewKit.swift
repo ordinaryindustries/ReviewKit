@@ -16,15 +16,21 @@ public struct ShapeProgressView: View {
     @Binding var value: Double
     let imageName: String
     let color: Color
+    let showScore: Bool
     
-    public init(count: Int = 5, value: Binding<Double>, imageName: String = "star", color: Color = .orange) {
+    public init(count: Int = 5, value: Binding<Double>, imageName: String = "star", color: Color = .orange, showScore: Bool = true) {
         self.count = count
         self._value = value
         self.imageName = imageName
         self.color = color
+        self.showScore = showScore
     }
     
     public var body: some View {
+        if showScore {
+            Text("\(value, specifier: "%.1f")")
+        }
+
         ZStack {
             ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $value)
             ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $value)
