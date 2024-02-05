@@ -1,6 +1,8 @@
 # ![ReviewKitIconThumbnail](https://github.com/ordinaryindustries/ReviewKit/assets/132616209/c67cae54-9885-4440-b092-c0957b8b90f0)
 ReviewKit
 
+Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
+
 ## Usage
 Add a ShapeProgressView and pass it a rating value.
 ```
@@ -29,3 +31,4 @@ ShapeProgressView(value: $value, layout: .full)
 
 <img width="511" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/61c5cf05-2d5f-4a99-9261-558074a42829">
 
+If you have any questions reach out on Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
