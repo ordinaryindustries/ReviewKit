@@ -27,4 +27,5 @@ ShapeProgressView(value: $value, layout: .full)
 
 .graphical
 
-<img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/7254e1e9-92b0-4b31-a1c5-1d571132a622">
+<img width="511" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/61c5cf05-2d5f-4a99-9261-558074a42829">
+
