@@ -1,5 +1,5 @@
-![ReviewKitIcon](https://github.com/ordinaryindustries/ReviewKit/assets/132616209/418606fc-c7e7-4e8b-ab1c-a1f11a6327e3)
-# ReviewKit
+# ![ReviewKitIconThumbnail](https://github.com/ordinaryindustries/ReviewKit/assets/132616209/c67cae54-9885-4440-b092-c0957b8b90f0)
+ReviewKit
 
 ## Usage
 Add a ShapeProgressView and pass it a rating value.
