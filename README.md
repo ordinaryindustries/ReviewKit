@@ -18,10 +18,13 @@ ShapeProgressView(value: $value, layout: .full)
 ```
 
 .full
+
 <img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/87556a52-474c-45d4-9ff5-921225d853b4">
 
 .score
+
 <img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/1f763ba2-8c25-481e-853d-145b7d288fab">
 
 .graphical
+
 <img width="512" alt="image" src="https://github.com/ordinaryindustries/ReviewKit/assets/132616209/7254e1e9-92b0-4b31-a1c5-1d571132a622">
