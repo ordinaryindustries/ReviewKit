@@ -27,7 +27,7 @@ public struct ShapeProgressView: View {
     }
     
     public var body: some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 8) {
             if showScore {
                 Text("\(value, specifier: "%.1f")")
                     .fontDesign(.rounded)
