@@ -22,6 +22,8 @@ public struct ShapeProgressView: View {
     let color: Color
     let layout: LayoutType
     
+    @StateObject private var reviewManager = ReviewManager(appId: "6448406354")
+    
     public init(count: Int = 5, value: Binding<Double>, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full) {
         self.count = count
         self._value = value
@@ -53,6 +55,19 @@ public struct ShapeProgressView: View {
                     ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $value)
                     ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $value)
                 }
+            }
+        }
+        .task {
+            do {
+                try await reviewManager.fetchAppStoreRating()
+            } catch AppStoreResponseError.invalidData {
+                print("Trying to fetch App Store rating failed due to invalid data.")
+            } catch AppStoreResponseError.invalidURL {
+                print("Trying to fetch App Store rating failed due to invalid URL.")
+            } catch AppStoreResponseError.invalidResponse {
+                print("Trying to fetch App Store rating failed due to invalid response.")
+            } catch {
+                print("Trying to fetch App Store rating failed due to an unknown error.")
             }
         }
     }
