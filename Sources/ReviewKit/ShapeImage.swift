@@ -1,0 +1,81 @@
+//
+//
+// 
+//
+// Created by Ordinary Industries on 2/4/24.
+// Copyright (c) 2023 Ordinary Industries. All rights reserved.
+//
+// Twitter: @OrdinaryInds
+// TikTok: @OrdinaryInds
+//
+
+
+import SwiftUI
+
+struct SizePreferenceKey: PreferenceKey {
+  static var defaultValue: CGSize = .zero
+  static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
+}
+
+struct ShapeImage: View {
+    let imageName: String
+    let position: ShapePosition
+    let color: Color
+    @Binding var value: Double
+    let index: Int
+    
+    @State private var size: CGSize = .zero
+    
+    init(imageName: String, position: ShapePosition = .background, color: Color, value: Binding<Double>, index: Int) {
+        self.imageName = imageName
+        self.position = position
+        self.color = color
+        self._value = value
+        self.index = index
+    }
+    
+    var maskRatio: CGFloat {
+        let mask = CGFloat(value) - CGFloat(index)
+        
+        switch mask {
+        case 1...:
+            return 1
+        case ..<0:
+            return 0
+        default:
+            return mask
+        }
+    }
+    
+    var calculatedImageName: String {
+        switch position {
+        case .foreground:
+            return "\(imageName).fill"
+        case .background:
+            return "\(imageName).fill"
+        }
+    }
+
+    var body: some View {
+        switch position {
+        case .foreground:
+            Image(systemName: calculatedImageName)
+                .foregroundStyle(color)
+                .mask(alignment: .leading) {
+                    Rectangle()
+                        .frame(width: size.width * maskRatio, height: size.height, alignment: .leading)
+                }
+                .background(GeometryReader { reader in
+                    Color.clear
+                        .preference(key: SizePreferenceKey.self, value: reader.size)
+                })
+                .onPreferenceChange(SizePreferenceKey.self) { newSize in
+                    size = newSize
+                }
+        case .background:
+            Image(systemName: calculatedImageName)
+                .foregroundStyle(color)
+                .opacity(0.2)
+        }
+    }
+}
