@@ -30,7 +30,7 @@ public struct ShapeProgressView: View {
         if showScore {
             Text("\(value, specifier: "%.1f")")
                 .fontDesign(.rounded)
-                .font(.title)
+                .font(.largeTitle)
                 .fontWeight(.bold)
         }
 
