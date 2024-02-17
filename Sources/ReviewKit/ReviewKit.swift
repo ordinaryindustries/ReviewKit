@@ -22,30 +22,50 @@ public struct ShapeProgressView: View {
     let color: Color
     let layout: LayoutType
     let showReviewCount: Bool
+    let showLaurels: Bool
     let countryCode: String
     
-    @StateObject private var reviewManager: ReviewManager
+    @State private var reviewManager: ReviewManager
     
-    public init(appId: String, count: Int = 5, imageName: String = "star", color: Color = .orange, layout: LayoutType = .full, showReviewCount: Bool = true, countryCode: String = "US") {
+    public init(appId: String,
+                count: Int = 5,
+                imageName: String = "star",
+                color: Color = .orange,
+                layout: LayoutType = .full,
+                showReviewCount: Bool = true,
+                showLaurels: Bool = true,
+                countryCode: String = "US"
+    ) {
         self.appId = appId
         self.count = count
         self.imageName = imageName
         self.color = color
         self.layout = layout
         self.showReviewCount = showReviewCount
+        self.showLaurels = showLaurels
         self.countryCode = countryCode
-        self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
+        self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
     
     public var body: some View {
         VStack(spacing: 8) {
             switch layout {
             case .full:
-                Text("\(reviewManager.rating, specifier: "%.1f")")
-                    .fontDesign(.rounded)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
+                HStack {
+                    if showLaurels {
+                        Image(systemName: "laurel.leading")
+                    }
+
+                    Text("\(reviewManager.rating, specifier: "%.1f")")
+                        .fontDesign(.rounded)
+
+                    if showLaurels {
+                        Image(systemName: "laurel.trailing")
+                    }
+                }
+                .font(.largeTitle)
+                .fontWeight(.bold)
+
                 ZStack {
                     ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
@@ -55,11 +75,21 @@ public struct ShapeProgressView: View {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
             case .score:
-                Text("\(reviewManager.rating, specifier: "%.1f")")
-                    .fontDesign(.rounded)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                
+                HStack {
+                    if showLaurels {
+                        Image(systemName: "laurel.leading")
+                    }
+
+                    Text("\(reviewManager.rating, specifier: "%.1f")")
+                        .fontDesign(.rounded)
+
+                    if showLaurels {
+                        Image(systemName: "laurel.trailing")
+                    }
+                }
+                .font(.largeTitle)
+                .fontWeight(.bold)
+
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
@@ -87,5 +117,18 @@ public struct ShapeProgressView: View {
                 print("Trying to fetch App Store rating failed due to an unknown error.")
             }
         }
+    }
+}
+
+#Preview {
+    // ID for Instagram
+    let appId = "389801252"
+
+    return VStack(spacing: 64) {
+        ShapeProgressView(appId: appId, layout: .full)
+
+        ShapeProgressView(appId: appId, layout: .graphical)
+
+        ShapeProgressView(appId: appId, layout: .score)
     }
 }
