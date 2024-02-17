@@ -67,10 +67,11 @@ public enum AppStoreResponseError: Error {
     case invalidData
 }
 
-class ReviewManager: ObservableObject {
-    @Published var rating: Double
-    @Published var reviewCount: Double
-    @Published var isLoading: Bool
+@Observable
+class ReviewManager {
+    var rating: Double
+    var reviewCount: Double
+    var isLoading: Bool
     let appId: String
     let countryCode: String
     

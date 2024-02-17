@@ -25,7 +25,7 @@ public struct ShapeProgressView: View {
     let showLaurels: Bool
     let countryCode: String
     
-    @StateObject private var reviewManager: ReviewManager
+    @State private var reviewManager: ReviewManager
     
     public init(appId: String,
                 count: Int = 5,
@@ -44,7 +44,7 @@ public struct ShapeProgressView: View {
         self.showReviewCount = showReviewCount
         self.showLaurels = showLaurels
         self.countryCode = countryCode
-        self._reviewManager = StateObject(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
+        self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
     
     public var body: some View {
@@ -129,11 +129,14 @@ public struct ShapeProgressView: View {
 }
 
 #Preview {
-    VStack(spacing: 64) {
-        ShapeProgressView(appId: "389801252", layout: .full)
+    // ID for Instagram
+    let appId = "389801252"
 
-        ShapeProgressView(appId: "389801252", layout: .graphical)
+    return VStack(spacing: 64) {
+        ShapeProgressView(appId: appId, layout: .full)
 
-        ShapeProgressView(appId: "389801252", layout: .score)
+        ShapeProgressView(appId: appId, layout: .graphical)
+
+        ShapeProgressView(appId: appId, layout: .score)
     }
 }
