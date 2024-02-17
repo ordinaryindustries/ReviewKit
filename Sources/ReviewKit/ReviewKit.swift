@@ -54,21 +54,17 @@ public struct ShapeProgressView: View {
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
                     }
                 }
+                .font(.largeTitle)
+                .fontWeight(.bold)
 
                 ZStack {
                     ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
@@ -82,21 +78,17 @@ public struct ShapeProgressView: View {
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
-                            .font(.largeTitle)
-                            .fontWeight(.bold)
                     }
                 }
+                .font(.largeTitle)
+                .fontWeight(.bold)
 
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
