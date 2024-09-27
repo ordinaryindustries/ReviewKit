@@ -17,6 +17,9 @@ Thank you for your interest in contributing to ReviewKit! Here are the guideline
     4.    Commit your changes with clear, concise messages.
     5.    Submit a pull request targeting the release branch and ensure all checks pass before requesting a review.
 
+## Discuss
+Join our [Discord](https://discord.gg/N2Mw2zvAnP) to discuss development of ReviewKit.
+
 ## Code Guidelines
 
     •    Follow the Swift API Design Guidelines.
