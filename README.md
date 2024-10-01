@@ -1,5 +1,5 @@
-# ![ReviewKitIconThumbnail](https://github.com/ordinaryindustries/ReviewKit/assets/132616209/c67cae54-9885-4440-b092-c0957b8b90f0)
-ReviewKit
+# ReviewKit
+![GitHub Social Image](https://github.com/user-attachments/assets/052d205d-68b5-4141-abd8-e9bfc5a0163b)
 
 Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
 
