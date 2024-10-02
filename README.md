@@ -1,5 +1,6 @@
 # ReviewKit
-![GitHub Social Image](https://github.com/user-attachments/assets/052d205d-68b5-4141-abd8-e9bfc5a0163b)
+![GitHub Social Image](https://github.com/user-attachments/assets/124d6d31-006e-4231-83eb-70335cd5d4a6)
+
 
 Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
 [Discord](https://discord.com/invite/rVvg4HgfxU)
