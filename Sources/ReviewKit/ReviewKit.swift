@@ -15,7 +15,7 @@ public enum LayoutType {
     case full, score, graphical
 }
 
-public struct ShapeProgressView: View {
+public struct RatingView: View {
     let appId: String
     let count: Int
     let imageName: String
@@ -67,8 +67,8 @@ public struct ShapeProgressView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
@@ -95,8 +95,8 @@ public struct ShapeProgressView: View {
                 }
             case .graphical:
                 ZStack {
-                    ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
@@ -125,10 +125,10 @@ public struct ShapeProgressView: View {
     let appId = "389801252"
 
     return VStack(spacing: 64) {
-        ShapeProgressView(appId: appId, layout: .full)
+        RatingView(appId: appId, layout: .full)
 
-        ShapeProgressView(appId: appId, layout: .graphical)
+        RatingView(appId: appId, layout: .graphical)
 
-        ShapeProgressView(appId: appId, layout: .score)
+        RatingView(appId: appId, layout: .score)
     }
 }
