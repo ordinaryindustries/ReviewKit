@@ -26,6 +26,7 @@ public struct ShapeProgressView: View {
     let countryCode: String
     
     @State private var reviewManager: ReviewManager
+    @State private var isLoading = true
     
     public init(appId: String,
                 count: Int = 5,
@@ -49,62 +50,69 @@ public struct ShapeProgressView: View {
     
     public var body: some View {
         VStack(spacing: 8) {
-            switch layout {
-            case .full:
-                HStack {
-                    if showLaurels {
-                        Image(systemName: "laurel.leading")
-                    }
-
-                    Text("\(reviewManager.rating, specifier: "%.1f")")
-                        .fontDesign(.rounded)
-
-                    if showLaurels {
-                        Image(systemName: "laurel.trailing")
-                    }
-                }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-                ZStack {
-                    ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
-                }
-                
-                if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                }
-            case .score:
-                HStack {
-                    if showLaurels {
-                        Image(systemName: "laurel.leading")
-                    }
-
-                    Text("\(reviewManager.rating, specifier: "%.1f")")
-                        .fontDesign(.rounded)
-
-                    if showLaurels {
-                        Image(systemName: "laurel.trailing")
-                    }
-                }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-                if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                }
-            case .graphical:
-                ZStack {
-                    ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
-                }
-                
-                if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                }
+            if isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: color))
+                    .scaleEffect(2.0, anchor: .center)
             }
+            else {
+                switch layout {
+                case .full:
+                    HStack {
+                        if showLaurels {
+                            Image(systemName: "laurel.leading")
+                        }
+                        
+                        Text("\(reviewManager.rating, specifier: "%.1f")")
+                            .fontDesign(.rounded)
+                        
+                        if showLaurels {
+                            Image(systemName: "laurel.trailing")
+                        }
+                    }
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    
+                    ZStack {
+                        ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                        ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    }
+                    
+                    if showReviewCount {
+                        Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    }
+                case .score:
+                    HStack {
+                        if showLaurels {
+                            Image(systemName: "laurel.leading")
+                        }
+                        
+                        Text("\(reviewManager.rating, specifier: "%.1f")")
+                            .fontDesign(.rounded)
+                        
+                        if showLaurels {
+                            Image(systemName: "laurel.trailing")
+                        }
+                    }
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    
+                    if showReviewCount {
+                        Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    }
+                case .graphical:
+                    ZStack {
+                        ShapeRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                        ShapeRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    }
+                    
+                    if showReviewCount {
+                        Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    }
+                }}
         }
         .task {
+            defer { isLoading = false }
             do {
                 try await reviewManager.fetchAppStoreRating()
             } catch AppStoreResponseError.invalidData {
@@ -123,12 +131,12 @@ public struct ShapeProgressView: View {
 #Preview {
     // ID for Instagram
     let appId = "389801252"
-
+    
     return VStack(spacing: 64) {
         ShapeProgressView(appId: appId, layout: .full)
-
+        
         ShapeProgressView(appId: appId, layout: .graphical)
-
+        
         ShapeProgressView(appId: appId, layout: .score)
     }
 }
