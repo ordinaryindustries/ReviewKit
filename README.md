@@ -2,6 +2,10 @@
 ![GitHub Social Image](https://github.com/user-attachments/assets/052d205d-68b5-4141-abd8-e9bfc5a0163b)
 
 Twitter [@OrdinaryInds](https://www.twitter.com/ordinaryinds)
+[Discord](https://discord.com/invite/rVvg4HgfxU)
+
+## Contributing
+If you're interested in contributing to ReviewKit head over to CONTRIBUTING.md and get started.
 
 ## Usage
 Add a ShapeProgressView in your view code and pass in your app's ID. The view will automatically fetch your app's rating when the view appears.
