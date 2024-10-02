@@ -11,11 +11,14 @@ Thank you for your interest in contributing to ReviewKit! Here are the guideline
 
 ## How to Contribute
 
-    1.    Clone the repository and create a new branch based on the latest release branch.
-    2.    Follow project coding standards and best practices for Swift.
-    3.    Write unit tests for any new features or bug fixes.
-    4.    Commit your changes with clear, concise messages.
-    5.    Submit a pull request targeting the release branch and ensure all checks pass before requesting a review.
+ 1. Fork the repository.
+ 2. Create a new branch for your changes based off the latest release branch.
+ 2. Follow project coding standards and best practices for Swift.
+ 3. Write unit tests where applicable.
+ 4. Commit your changes with clear, concise messages.
+ 5. Squash your changes into a single commit.
+ 6. Rebase to the latest version of the source release branch from this repository.
+ 7. Submit a pull request targeting the release branch and ensure all checks pass before requesting a review.
 
 ## Discuss
 Join our [Discord](https://discord.gg/N2Mw2zvAnP) to discuss development of ReviewKit.
@@ -27,7 +30,7 @@ Join our [Discord](https://discord.gg/N2Mw2zvAnP) to discuss development of Revi
 
 ## Pull Request Guidelines
 
-    •    Reference any related issues in your pull request.
+    •    All PRs should have a related issue. Link the issue using the `closes` keyword in the body of the PR.
     •    Make sure all unit tests pass and CI checks are green before submitting.
     •    Be open to feedback and iterate on your changes as needed.
 
