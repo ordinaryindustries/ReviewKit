@@ -88,6 +88,17 @@ class ReviewManager {
         return rating - remainder
     }
     
+    func localizedString(forKey key: String, arguments: CVarArg...) -> String {
+        let template = NSLocalizedString(key, bundle: Bundle.module, comment: "")
+        return String(format: template, arguments: arguments)
+    }
+    
+    var localizedReviewCount: String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        return numberFormatter.string(from: NSNumber(value: reviewCount)) ?? "\(Int(reviewCount))"
+    }
+    
     func fetchAppStoreRating() async throws {
         print("Fetching App Store rating.")
         DispatchQueue.main.async { self.isLoading = true }

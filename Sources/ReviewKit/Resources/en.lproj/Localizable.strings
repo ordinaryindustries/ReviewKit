@@ -1,0 +1,9 @@
+//
+//  Localizable.strings
+//  ReviewKit
+//
+//  Created by Jack on 10/2/24.
+//
+
+"rating.reviews.countText" = "Based on %@ reviews";
+"rating.reviews.noReviews" = "No reviews yet";
