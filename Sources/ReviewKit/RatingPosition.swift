@@ -12,6 +12,6 @@
 
 import Foundation
 
-enum StarPosition {
+enum RatingPosition {
     case foreground, background
 }

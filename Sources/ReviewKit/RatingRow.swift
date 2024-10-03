@@ -12,10 +12,10 @@
 
 import SwiftUI
 
-struct StarRow: View {
+struct RatingRow: View {
     let count: Int
     let imageName: String
-    let position: StarPosition
+    let position: RatingPosition
     let color: Color
     @Binding var value: Double
 
@@ -23,7 +23,7 @@ struct StarRow: View {
         VStack {
             HStack {
                 ForEach(0..<count, id: \.self) { index in
-                    StarImage(imageName: imageName, position: position, color: color, value: $value, index: index)
+                    RatingImage(imageName: imageName, position: position, color: color, value: $value, index: index)
                 }
             }
         }

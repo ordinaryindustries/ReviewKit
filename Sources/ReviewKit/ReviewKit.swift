@@ -68,8 +68,8 @@ public struct ShapeProgressView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
@@ -96,8 +96,8 @@ public struct ShapeProgressView: View {
                 }
             case .graphical:
                 ZStack {
-                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
@@ -173,8 +173,8 @@ public struct RatingView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
@@ -201,8 +201,8 @@ public struct RatingView: View {
                 }
             case .graphical:
                 ZStack {
-                    StarRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    StarRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
                 
                 if showReviewCount {
