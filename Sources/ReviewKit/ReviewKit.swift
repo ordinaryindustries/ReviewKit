@@ -15,6 +15,7 @@ public enum LayoutType {
     case full, score, graphical
 }
 
+// swiftlint:disable:next line_length
 @available(*, deprecated, renamed: "RatingView", message: "ShapeProgressView has been renamed to RatingView. ShapeProgressView will be removed in a future version.")
 public struct ShapeProgressView: View {
     let appId: String
