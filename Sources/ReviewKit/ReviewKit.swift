@@ -83,7 +83,8 @@ public struct ShapeProgressView: View {
 
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
+                                                        arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
 
                     Text(reviewCountText)
@@ -201,12 +202,22 @@ public struct RatingView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
 
                 if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    Text(reviewManager.reviewCount > 0
+                        ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews"
+                        : "No reviews yet")
                 }
             case .score:
                 HStack {
@@ -225,17 +236,28 @@ public struct RatingView: View {
                 .fontWeight(.bold)
 
                 if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    Text(reviewManager.reviewCount > 0
+                        ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews"
+                        : "No reviews yet")
                 }
             case .graphical:
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
 
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
+                                                        arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
 
                     Text(reviewCountText)
