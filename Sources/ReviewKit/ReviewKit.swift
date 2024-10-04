@@ -25,9 +25,9 @@ public struct ShapeProgressView: View {
     let showReviewCount: Bool
     let showLaurels: Bool
     let countryCode: String
-    
+
     @State private var reviewManager: ReviewManager
-    
+
     public init(appId: String,
                 count: Int = 5,
                 imageName: String = "star",
@@ -47,7 +47,7 @@ public struct ShapeProgressView: View {
         self.countryCode = countryCode
         self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
-    
+
     public var body: some View {
         VStack(spacing: 8) {
             switch layout {
@@ -71,12 +71,12 @@ public struct ShapeProgressView: View {
                     RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
                         ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                 }
             case .score:
@@ -99,7 +99,7 @@ public struct ShapeProgressView: View {
                     let reviewCountText = reviewManager.reviewCount > 0
                         ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                 }
             case .graphical:
@@ -107,7 +107,7 @@ public struct ShapeProgressView: View {
                     RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
@@ -138,9 +138,9 @@ public struct RatingView: View {
     let showReviewCount: Bool
     let showLaurels: Bool
     let countryCode: String
-    
+
     @State private var reviewManager: ReviewManager
-    
+
     public init(appId: String,
                 count: Int = 5,
                 imageName: String = "star",
@@ -160,7 +160,7 @@ public struct RatingView: View {
         self.countryCode = countryCode
         self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
-    
+
     public var body: some View {
         VStack(spacing: 8) {
             switch layout {
@@ -184,7 +184,7 @@ public struct RatingView: View {
                     RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                 }
@@ -212,12 +212,12 @@ public struct RatingView: View {
                     RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
                     RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
                         ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                 }
             }
