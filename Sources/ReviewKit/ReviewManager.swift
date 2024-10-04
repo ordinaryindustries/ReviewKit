@@ -1,6 +1,6 @@
 //
 //
-// 
+//
 //
 // Created by Ordinary Industries on 2/5/24.
 // Copyright (c) 2023 Ordinary Industries. All rights reserved.
@@ -74,7 +74,11 @@ class ReviewManager {
     let appId: String
     let countryCode: String
 
-    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String, countryCode: String) {
+    public init(rating: Double = 0,
+                reviewCount: Double = 0,
+                isLoading: Bool = false,
+                appId: String,
+                countryCode: String) {
         self.rating = rating
         self.reviewCount = reviewCount
         self.isLoading = isLoading
