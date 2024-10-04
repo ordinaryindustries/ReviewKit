@@ -12,6 +12,6 @@
 
 import Foundation
 
-enum ShapePosition {
+enum RatingPosition {
     case foreground, background
 }

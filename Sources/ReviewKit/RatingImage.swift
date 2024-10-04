@@ -17,16 +17,16 @@ struct SizePreferenceKey: PreferenceKey {
   static func reduce(value: inout CGSize, nextValue: () -> CGSize) {}
 }
 
-struct ShapeImage: View {
+struct RatingImage: View {
     let imageName: String
-    let position: ShapePosition
+    let position: RatingPosition
     let color: Color
     @Binding var value: Double
     let index: Int
     
     @State private var size: CGSize = .zero
     
-    init(imageName: String, position: ShapePosition = .background, color: Color, value: Binding<Double>, index: Int) {
+    init(imageName: String, position: RatingPosition = .background, color: Color, value: Binding<Double>, index: Int) {
         self.imageName = imageName
         self.position = position
         self.color = color
