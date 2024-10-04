@@ -72,7 +72,11 @@ public struct ShapeProgressView: View {
                 }
                 
                 if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    let reviewCountText = reviewManager.reviewCount > 0
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
+                    
+                    Text(reviewCountText)
                 }
             case .score:
                 HStack {
@@ -91,7 +95,11 @@ public struct ShapeProgressView: View {
                 .fontWeight(.bold)
 
                 if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    let reviewCountText = reviewManager.reviewCount > 0
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
+                    
+                    Text(reviewCountText)
                 }
             case .graphical:
                 ZStack {
@@ -100,7 +108,11 @@ public struct ShapeProgressView: View {
                 }
                 
                 if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    let reviewCountText = reviewManager.reviewCount > 0
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
+                    
+                    Text(reviewCountText)
                 }
             }
         }
