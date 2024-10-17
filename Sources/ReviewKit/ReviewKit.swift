@@ -21,7 +21,9 @@ public struct ShapeProgressView: View {
     let count: Int
     let imageName: String
     let color: Color
-    let textColor: Color
+    let laurelColor: Color
+    let ratingTextColor: Color
+    let ratingCountTextColor: Color
     let layout: LayoutType
     let showReviewCount: Bool
     let showLaurels: Bool
@@ -33,7 +35,9 @@ public struct ShapeProgressView: View {
                 count: Int = 5,
                 imageName: String = "star",
                 color: Color = .orange,
-                textColor: Color = .black,
+                laurelColor: Color = .black,
+                ratingTextColor: Color = .black,
+                ratingCountTextColor: Color = .black,
                 layout: LayoutType = .full,
                 showReviewCount: Bool = true,
                 showLaurels: Bool = true,
@@ -43,7 +47,9 @@ public struct ShapeProgressView: View {
         self.count = count
         self.imageName = imageName
         self.color = color
-        self.textColor = textColor
+        self.ratingCountTextColor = ratingCountTextColor
+        self.laurelColor = laurelColor
+        self.ratingTextColor = ratingTextColor
         self.layout = layout
         self.showReviewCount = showReviewCount
         self.showLaurels = showLaurels
@@ -58,13 +64,16 @@ public struct ShapeProgressView: View {
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
+                            .foregroundColor(laurelColor)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
+                        .foregroundColor(ratingTextColor)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
+                            .foregroundColor(laurelColor)
                     }
                 }
                 .font(.largeTitle)
@@ -81,19 +90,22 @@ public struct ShapeProgressView: View {
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
                     
                     Text(reviewCountText)
-                        .foregroundStyle(textColor)
+                        .foregroundStyle(ratingCountTextColor)
                 }
             case .score:
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
+                            .foregroundColor(laurelColor)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
+                        .foregroundColor(ratingTextColor)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
+                            .foregroundColor(laurelColor)
                     }
                 }
                 .font(.largeTitle)
@@ -105,7 +117,7 @@ public struct ShapeProgressView: View {
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
                     
                     Text(reviewCountText)
-                        .foregroundColor(textColor)
+                        .foregroundColor(ratingCountTextColor)
                 }
 
             case .graphical:
@@ -116,7 +128,7 @@ public struct ShapeProgressView: View {
                 
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                        .foregroundColor(textColor)
+                        .foregroundColor(ratingCountTextColor)
                 }
             }
         }
@@ -141,7 +153,9 @@ public struct RatingView: View {
     let count: Int
     let imageName: String
     let color: Color
-    let textColor: Color
+    let laurelColor: Color
+    let ratingTextColor: Color
+    let ratingCountTextColor: Color
     let layout: LayoutType
     let showReviewCount: Bool
     let showLaurels: Bool
@@ -153,7 +167,9 @@ public struct RatingView: View {
                 count: Int = 5,
                 imageName: String = "star",
                 color: Color = .orange,
-                textColor: Color = .black,
+                laurelColor: Color = .black,
+                ratingTextColor: Color = .black,
+                ratingCountTextColor: Color = .black,
                 layout: LayoutType = .full,
                 showReviewCount: Bool = true,
                 showLaurels: Bool = true,
@@ -163,7 +179,9 @@ public struct RatingView: View {
         self.count = count
         self.imageName = imageName
         self.color = color
-        self.textColor = textColor
+        self.ratingCountTextColor = ratingCountTextColor
+        self.laurelColor = laurelColor
+        self.ratingTextColor = ratingTextColor
         self.layout = layout
         self.showReviewCount = showReviewCount
         self.showLaurels = showLaurels
@@ -178,13 +196,16 @@ public struct RatingView: View {
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
+                            .foregroundColor(laurelColor)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
+                        .foregroundStyle(ratingTextColor)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
+                            .foregroundColor(laurelColor)
                     }
                 }
                 .font(.largeTitle)
@@ -197,19 +218,22 @@ public struct RatingView: View {
                 
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                        .foregroundColor(textColor)
+                        .foregroundColor(ratingCountTextColor)
                 }
             case .score:
                 HStack {
                     if showLaurels {
                         Image(systemName: "laurel.leading")
+                            .foregroundColor(laurelColor)
                     }
 
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
+                        .foregroundColor(ratingTextColor)
 
                     if showLaurels {
                         Image(systemName: "laurel.trailing")
+                            .foregroundColor(laurelColor)
                     }
                 }
                 .font(.largeTitle)
@@ -217,7 +241,7 @@ public struct RatingView: View {
 
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                        .foregroundColor(textColor)
+                        .foregroundColor(ratingCountTextColor)
                 }
             case .graphical:
                 ZStack {
@@ -231,7 +255,7 @@ public struct RatingView: View {
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
                     
                     Text(reviewCountText)
-                        .foregroundColor(textColor)
+                        .foregroundColor(ratingCountTextColor)
                 }
             }
         }
@@ -256,13 +280,13 @@ public struct RatingView: View {
     let appId = "389801252"
 
     return VStack(spacing: 64) {
-        RatingView(appId: appId, layout: .full)
+        RatingView(appId: appId, laurelColor: .yellow, ratingTextColor: .cyan, layout: .full)
 
-        RatingView(appId: appId, textColor: .blue, layout: .graphical)
+        RatingView(appId: appId, ratingCountTextColor: .blue, layout: .graphical)
 
-        RatingView(appId: appId, textColor: .green, layout: .score)
+        RatingView(appId: appId, laurelColor: .blue, ratingTextColor: .purple, layout: .score)
         
         // MARK - Verifying Backward Compatibility
-        ShapeProgressView(appId: appId, textColor: .brown)
+//        ShapeProgressView(appId: appId, laurelColor: .green, ratingTextColor: .yellow, ratingCountTextColor: .red, layout: .full)
     }
 }
