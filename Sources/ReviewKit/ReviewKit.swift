@@ -67,7 +67,7 @@ public struct ShapeProgressView: View {
                         Image(systemName: "laurel.leading")
                             .foregroundColor(laurelColor)
                     }
-
+                    
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
                         .foregroundColor(ratingTextColor)
@@ -79,7 +79,7 @@ public struct ShapeProgressView: View {
                 }
                 .font(.largeTitle)
                 .fontWeight(.bold)
-
+                
                 ZStack {
                     RatingRow(count: count,
                               imageName: imageName,
@@ -108,7 +108,7 @@ public struct ShapeProgressView: View {
                         Image(systemName: "laurel.leading")
                             .foregroundColor(laurelColor)
                     }
-
+                    
                     Text("\(reviewManager.rating, specifier: "%.1f")")
                         .fontDesign(.rounded)
                         .foregroundColor(ratingTextColor)
@@ -120,13 +120,12 @@ public struct ShapeProgressView: View {
                 }
                 .font(.largeTitle)
                 .fontWeight(.bold)
-
+                
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
                         ? reviewManager.localizedString(forKey: "rating.reviews.countText",
                                                         arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-
                     Text(reviewCountText)
                         .foregroundColor(ratingCountTextColor)
                 }
@@ -210,88 +209,69 @@ public struct RatingView: View {
 
     public var body: some View {
         VStack(spacing: 8) {
-            switch layout {
-            case .full:
-                HStack {
-                    if showLaurels {
-                        Image(systemName: "laurel.leading")
-                            .foregroundColor(laurelColor)
+            if reviewManager.isLoading {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle(tint: color))
+                    .scaleEffect(2.0, anchor: .center)
+            }
+            else {
+                switch layout {
+                case .full:
+                    HStack {
+                        if showLaurels {
+                            Image(systemName: "laurel.leading")
+                        }
+                        
+                        Text("\(reviewManager.rating, specifier: "%.1f")")
+                            .fontDesign(.rounded)
+                        
+                        if showLaurels {
+                            Image(systemName: "laurel.trailing")
+                        }
                     }
-
-                    Text("\(reviewManager.rating, specifier: "%.1f")")
-                        .fontDesign(.rounded)
-                        .foregroundStyle(ratingTextColor)
-
-                    if showLaurels {
-                        Image(systemName: "laurel.trailing")
-                            .foregroundColor(laurelColor)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    
+                    ZStack {
+                        RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                        RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
                     }
-                }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-                ZStack {
-                    RatingRow(count: count,
-                              imageName: imageName,
-                              position: .background,
-                              color: color,
-                              value: $reviewManager.rating)
-                    RatingRow(count: count,
-                              imageName: imageName,
-                              position: .foreground,
-                              color: color,
-                              value: $reviewManager.rating)
-                }
-
-                if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                        .foregroundColor(ratingCountTextColor)
-                }
-            case .score:
-                HStack {
-                    if showLaurels {
-                        Image(systemName: "laurel.leading")
-                            .foregroundColor(laurelColor)
+                    
+                    if showReviewCount {
+                        Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                     }
-
-                    Text("\(reviewManager.rating, specifier: "%.1f")")
-                        .fontDesign(.rounded)
-                        .foregroundColor(ratingTextColor)
-
-                    if showLaurels {
-                        Image(systemName: "laurel.trailing")
-                            .foregroundColor(laurelColor)
+                case .score:
+                    HStack {
+                        if showLaurels {
+                            Image(systemName: "laurel.leading")
+                        }
+                        
+                        Text("\(reviewManager.rating, specifier: "%.1f")")
+                            .fontDesign(.rounded)
+                        
+                        if showLaurels {
+                            Image(systemName: "laurel.trailing")
+                        }
                     }
-                }
-                .font(.largeTitle)
-                .fontWeight(.bold)
-
-                if showReviewCount {
-                    Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
-                        .foregroundColor(ratingCountTextColor)
-                }
-            case .graphical:
-                ZStack {
-                    RatingRow(count: count,
-                              imageName: imageName,
-                              position: .background,
-                              color: color,
-                              value: $reviewManager.rating)
-                    RatingRow(count: count,
-                              imageName: imageName,
-                              position: .foreground,
-                              color: color,
-                              value: $reviewManager.rating)
-                }
-
-                if showReviewCount {
-                    let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
-                                                        arguments: reviewManager.localizedReviewCount)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    
+                    if showReviewCount {
+                        Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
+                    }
+                case .graphical:
+                    ZStack {
+                        RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
+                        RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    }
+                    
+                    if showReviewCount {
+                        let reviewCountText = reviewManager.reviewCount > 0
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-
-                    Text(reviewCountText)
-                        .foregroundColor(ratingCountTextColor)
+                        
+                        Text(reviewCountText)
+                    }
                 }
             }
         }
