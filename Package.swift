@@ -10,16 +10,16 @@ let package = Package(
         .macOS(.v10_15), .iOS(.v17), .visionOS(.v1)
     ],
     products: [
-        // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "ReviewKit",
             targets: ["ReviewKit"]),
+    ], dependencies: [
+        .package(url: "https://github.com/realm/SwiftLint", branch: "main")
     ],
     targets: [
-        // Targets are the basic building blocks of a package, defining a module or a test suite.
-        // Targets can depend on other targets in this package and products from dependencies.
         .target(
-            name: "ReviewKit"
+            name: "ReviewKit",
+            plugins: [.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")]
         ),
         .testTarget(
             name: "ReviewKitTests",
