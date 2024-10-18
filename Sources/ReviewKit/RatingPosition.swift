@@ -9,7 +9,6 @@
 // TikTok: @OrdinaryInds
 //
 
-
 import Foundation
 
 enum RatingPosition {

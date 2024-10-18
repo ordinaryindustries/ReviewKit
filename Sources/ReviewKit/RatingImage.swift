@@ -9,7 +9,6 @@
 // TikTok: @OrdinaryInds
 //
 
-
 import SwiftUI
 
 struct SizePreferenceKey: PreferenceKey {
@@ -23,9 +22,9 @@ struct RatingImage: View {
     let color: Color
     @Binding var value: Double
     let index: Int
-    
+
     @State private var size: CGSize = .zero
-    
+
     init(imageName: String, position: RatingPosition = .background, color: Color, value: Binding<Double>, index: Int) {
         self.imageName = imageName
         self.position = position
@@ -33,10 +32,10 @@ struct RatingImage: View {
         self._value = value
         self.index = index
     }
-    
+
     var maskRatio: CGFloat {
         let mask = CGFloat(value) - CGFloat(index)
-        
+
         switch mask {
         case 1...:
             return 1
@@ -46,7 +45,7 @@ struct RatingImage: View {
             return mask
         }
     }
-    
+
     var calculatedImageName: String {
         switch position {
         case .foreground:

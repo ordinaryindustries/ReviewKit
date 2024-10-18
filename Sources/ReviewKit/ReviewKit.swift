@@ -15,6 +15,7 @@ public enum LayoutType {
     case full, score, graphical
 }
 
+// swiftlint:disable:next line_length
 @available(*, deprecated, renamed: "RatingView", message: "ShapeProgressView has been renamed to RatingView. ShapeProgressView will be removed in a future version.")
 public struct ShapeProgressView: View {
     let appId: String
@@ -28,9 +29,9 @@ public struct ShapeProgressView: View {
     let showReviewCount: Bool
     let showLaurels: Bool
     let countryCode: String
-    
+
     @State private var reviewManager: ReviewManager
-    
+
     public init(appId: String,
                 count: Int = 5,
                 imageName: String = "star",
@@ -56,7 +57,7 @@ public struct ShapeProgressView: View {
         self.countryCode = countryCode
         self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
-    
+
     public var body: some View {
         VStack(spacing: 8) {
             switch layout {
@@ -80,15 +81,24 @@ public struct ShapeProgressView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
+                                                        arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                         .foregroundStyle(ratingCountTextColor)
                 }
@@ -113,19 +123,28 @@ public struct ShapeProgressView: View {
 
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
+                                                        arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                         .foregroundColor(ratingCountTextColor)
                 }
 
             case .graphical:
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                         .foregroundColor(ratingCountTextColor)
@@ -160,9 +179,9 @@ public struct RatingView: View {
     let showReviewCount: Bool
     let showLaurels: Bool
     let countryCode: String
-    
+
     @State private var reviewManager: ReviewManager
-    
+
     public init(appId: String,
                 count: Int = 5,
                 imageName: String = "star",
@@ -188,7 +207,7 @@ public struct RatingView: View {
         self.countryCode = countryCode
         self._reviewManager = State(wrappedValue: ReviewManager(appId: appId, countryCode: countryCode))
     }
-    
+
     public var body: some View {
         VStack(spacing: 8) {
             switch layout {
@@ -212,10 +231,18 @@ public struct RatingView: View {
                 .fontWeight(.bold)
 
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     Text(reviewManager.reviewCount > 0 ? "Based on \(reviewManager.reviewCount, specifier: "%.0f") reviews" : "No reviews yet")
                         .foregroundColor(ratingCountTextColor)
@@ -245,15 +272,24 @@ public struct RatingView: View {
                 }
             case .graphical:
                 ZStack {
-                    RatingRow(count: count, imageName: imageName, position: .background, color: color, value: $reviewManager.rating)
-                    RatingRow(count: count, imageName: imageName, position: .foreground, color: color, value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .background,
+                              color: color,
+                              value: $reviewManager.rating)
+                    RatingRow(count: count,
+                              imageName: imageName,
+                              position: .foreground,
+                              color: color,
+                              value: $reviewManager.rating)
                 }
-                
+
                 if showReviewCount {
                     let reviewCountText = reviewManager.reviewCount > 0
-                        ? reviewManager.localizedString(forKey: "rating.reviews.countText", arguments: reviewManager.localizedReviewCount)
+                        ? reviewManager.localizedString(forKey: "rating.reviews.countText",
+                                                        arguments: reviewManager.localizedReviewCount)
                         : reviewManager.localizedString(forKey: "rating.reviews.noReviews")
-                    
+
                     Text(reviewCountText)
                         .foregroundColor(ratingCountTextColor)
                 }

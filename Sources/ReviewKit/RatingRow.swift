@@ -9,7 +9,6 @@
 // TikTok: @OrdinaryInds
 //
 
-
 import SwiftUI
 
 struct RatingRow: View {

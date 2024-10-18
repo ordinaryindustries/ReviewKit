@@ -1,6 +1,6 @@
 //
 //
-// 
+//
 //
 // Created by Ordinary Industries on 2/5/24.
 // Copyright (c) 2023 Ordinary Industries. All rights reserved.
@@ -8,7 +8,6 @@
 // Twitter: @OrdinaryInds
 // TikTok: @OrdinaryInds
 //
-
 
 import Foundation
 
@@ -74,47 +73,51 @@ class ReviewManager {
     var isLoading: Bool
     let appId: String
     let countryCode: String
-    
-    public init(rating: Double = 0, reviewCount: Double = 0, isLoading: Bool = false, appId: String, countryCode: String) {
+
+    public init(rating: Double = 0,
+                reviewCount: Double = 0,
+                isLoading: Bool = false,
+                appId: String,
+                countryCode: String) {
         self.rating = rating
         self.reviewCount = reviewCount
         self.isLoading = isLoading
         self.appId = appId
         self.countryCode = countryCode
     }
-    
+
     var roundedRating: Double {
         let remainder = rating.truncatingRemainder(dividingBy: 0.5)
         return rating - remainder
     }
-    
+
     func localizedString(forKey key: String, arguments: CVarArg...) -> String {
         let template = NSLocalizedString(key, bundle: Bundle.module, comment: "")
         return String(format: template, arguments: arguments)
     }
-    
+
     var localizedReviewCount: String {
         let numberFormatter = NumberFormatter()
         numberFormatter.numberStyle = .decimal
         return numberFormatter.string(from: NSNumber(value: reviewCount)) ?? "\(Int(reviewCount))"
     }
-    
+
     func fetchAppStoreRating() async throws {
         print("Fetching App Store rating.")
         DispatchQueue.main.async { self.isLoading = true }
-        
+
         // The URL for the api endpoint.
         let endpoint = "http://itunes.apple.com/lookup?id=\(appId)&country=\(countryCode)"
-        
+
         // Try creating a URL object with the endpoint url. If we cannot make the URL return.
         guard let url = URL(string: endpoint) else {
             DispatchQueue.main.async { self.isLoading = false }
             throw AppStoreResponseError.invalidURL
         }
-        
+
         // Fetch the data.
         let (data, response) = try await URLSession.shared.data(from: url)
-        
+
         // Ensure the call was successful by checking the HTTP status code.
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             DispatchQueue.main.async { self.isLoading = false }
