@@ -78,3 +78,25 @@ struct RatingImage: View {
         }
     }
 }
+
+struct RatingImage_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            HStack {
+                RatingImage(imageName: "star", position: .foreground, color: .yellow, value: .constant(0.5), index: 0)
+                RatingImage(imageName: "star", position: .foreground, color: .orange, value: .constant(1.0), index: 0)
+                RatingImage(imageName: "star", position: .foreground, color: .purple, value: .constant(0.7), index: 0)
+            }
+            .previewDisplayName("Foreground(filled)")
+            
+            HStack {
+                RatingImage(imageName: "star", position: .background, color: .yellow, value: .constant(0.5), index: 0)
+                RatingImage(imageName: "star", position: .background, color: .orange, value: .constant(1.0), index: 0)
+                RatingImage(imageName: "star", position: .background, color: .purple, value: .constant(0.0), index: 0)
+            }
+            .previewDisplayName("Background(unfilled)")
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
+    }
+}

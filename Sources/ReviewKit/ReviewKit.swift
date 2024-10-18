@@ -311,18 +311,26 @@ public struct RatingView: View {
     }
 }
 
-#Preview {
-    // ID for Instagram
-    let appId = "389801252"
-
-    return VStack(spacing: 64) {
-        RatingView(appId: appId, laurelColor: .yellow, ratingTextColor: .cyan, layout: .full)
-
-        RatingView(appId: appId, ratingCountTextColor: .blue, layout: .graphical)
-
-        RatingView(appId: appId, laurelColor: .blue, ratingTextColor: .purple, layout: .score)
-        
-        // MARK - Verifying Backward Compatibility
-//        ShapeProgressView(appId: appId, laurelColor: .green, ratingTextColor: .yellow, ratingCountTextColor: .red, layout: .full)
+struct ReviewKit_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            
+            RatingView(appId: "1586351368", layout: .full)
+                .previewDisplayName("Full Layout")
+            
+            RatingView(appId: "389801252", layout: .full,showReviewCount: false)
+                .previewDisplayName("Layout without Review Count")
+            
+            RatingView(appId: "389801252", layout: .score)
+                .previewDisplayName("Score Layout")
+            
+            RatingView(appId: "389801252", layout: .graphical)
+                .previewDisplayName("Graphical Layout")
+            
+            RatingView(appId: "389801252", count: 5, imageName: "heart", color: .red, layout: .full,showReviewCount: false)
+                .previewDisplayName("Custom Style with hearts")
+        }
+        .padding()
+        .previewLayout(.sizeThatFits)
     }
 }
