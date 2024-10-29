@@ -1,0 +1,9 @@
+//
+//  Localizable.strings
+//  ReviewKit
+//
+//  Created by Jack on 10/2/24.
+//
+
+"rating.reviews.countText" = "%@ arvostelun perusteella";
+"rating.reviews.noReviews" = "Ei vielä arvosteluja";
