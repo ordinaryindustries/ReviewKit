@@ -14,12 +14,11 @@ let package = Package(
             name: "ReviewKit",
             targets: ["ReviewKit"]),
     ], dependencies: [
-        .package(url: "https://github.com/realm/SwiftLint", branch: "main")
     ],
     targets: [
         .target(
             name: "ReviewKit",
-            plugins: [.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLint")]
+            plugins: []
         ),
         .testTarget(
             name: "ReviewKitTests",
